@@ -16,14 +16,14 @@ Recent LSS-based multi-view 3D object detection has made tremendous progress, by
 Code will be released soon.
 
 ## Results
-###3D Object Detection on nuScenes val set:
+### 3D Object Detection on nuScenes val set:
 Model | Image size | CBGS | mAP | NDS
 --- |:---:|:---:|:---:|:---:
 AeDet_R50        | 256x704  | No  | 0.358 | 0.473
 AeDet_R50        | 256x704  | Yes | 0.387 | 0.501 
 AeDet_R101       | 512x1408 | Yes | 0.449 | 0.561
 
-###3D Object Detection on nuScenes test set:
+### 3D Object Detection on nuScenes test set:
 Model | Image size | CBGS | mAP | NDS
 --- |:---:|:---:|:---:|:---:
 AeDet_ConvNeXt-B | 640x1600 | Yes | 0.531 | 0.620
