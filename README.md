@@ -1,6 +1,6 @@
 
 # AeDet: Azimuth-invariant Multi-view 3D Object Detection 
-[Paper]() &nbsp; &nbsp; [Website](https://fcjian.github.io/aedet)
+[Paper](https://arxiv.org/abs/2211.12501) &nbsp; &nbsp; [Website](https://fcjian.github.io/aedet)
 
 ## News
 AeDet achieves SOTA on Camera-Only nuScenes Detection Task with 53.1% mAP and 62.0% NDS!
@@ -36,7 +36,7 @@ If you find AeDet useful in your research, please consider citing:
 @inproceedings{feng2022aedet,
     title={AeDet: Azimuth-invariant Multi-view 3D Object Detection},
     author={Feng, Chengjian and Jie, Zequn, Zhong, Yujie and Chu, Xiangxiang and Ma, Lin},
-    journal={arXiv preprint},
+    journal={arXiv preprint arXiv:2211.12501},
     year={2022}
 }
 ```
