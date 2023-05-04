@@ -45,7 +45,7 @@ python setup.py develop
 
 **Step 1.** Symlink the dataset root to `./data/`.
 ```
-ln -s [nuscenes root] ./data/
+ln -s ${nuscenes root} ./data/
 ```
 The directory will be as follows.
 ```
