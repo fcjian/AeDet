@@ -89,7 +89,7 @@ Model | Image size | #Key frames | CBGS |  mAP  |  NDS   |  Download
 
 ## Acknowledgement
 
-Thanks [BEVDepth](https://github.com/Megvii-BaseDetection/BEVDepth) team and [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) team for the wonderful open source project!
+Thanks [BEVDepth](https://github.com/Megvii-BaseDetection/BEVDepth) team and [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) team for the wonderful open source projects!
 
 ## Citation
 
