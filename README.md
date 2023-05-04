@@ -78,7 +78,6 @@ python ${EXP_PATH} --ckpt_path ${EMA_CKPT_PATH} -e -b 8 --gpus 8
 ```
 
 ## Results
-### 3D Object Detection on nuScenes val set:
 Model | Image size | #Key frames | CBGS |  mAP  |  NDS   |  Download
 --- |:-----------:|:-----------:|:---:|:-----:|:------:|:---:
 [BEVDepth_R50 (Baseline)](https://github.com/Megvii-BaseDetection/BEVDepth) | 256x704  |     One     |     No     | 0.315 | 0.367  |  --
