@@ -70,7 +70,7 @@ backbone_conf = {
         frozen_stages=0,
         out_indices=[0, 1, 2, 3],
         norm_eval=False,
-        init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet50'),
+        init_cfg=dict(type='Pretrained', checkpoint='checkpoints/resnet50-0676ba61.pth'), # 'torchvision://resnet50'),
     ),
     'img_neck_conf':
     dict(
