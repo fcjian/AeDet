@@ -1,25 +1,25 @@
 """
-mAP: 0.3809
-mATE: 0.5888
-mASE: 0.2762
-mAOE: 0.4426
-mAVE: 0.3705
-mAAE: 0.2059
-NDS: 0.5020
-Eval time: 104.7s
+mAP: 0.4488
+mATE: 0.5289
+mASE: 0.2623
+mAOE: 0.3189
+mAVE: 0.3157
+mAAE: 0.2034
+NDS: 0.5615
+Eval time: 85.8s
 
 Per-class results:
 Object Class	AP	ATE	ASE	AOE	AVE	AAE
-car	0.579	0.469	0.157	0.095	0.361	0.211
-truck	0.308	0.626	0.207	0.096	0.313	0.201
-bus	0.432	0.580	0.201	0.077	0.646	0.245
-trailer	0.199	0.819	0.267	0.317	0.234	0.187
-construction_vehicle	0.089	0.821	0.490	1.075	0.099	0.351
-pedestrian	0.368	0.664	0.296	0.790	0.478	0.241
-motorcycle	0.379	0.588	0.256	0.525	0.630	0.192
-bicycle	0.327	0.497	0.273	0.885	0.204	0.019
-traffic_cone	0.555	0.413	0.329	nan	nan	nan
-barrier	0.574	0.411	0.287	0.124	nan	nan
+car	0.645	0.380	0.147	0.060	0.304	0.211
+truck	0.363	0.573	0.192	0.064	0.277	0.182
+bus	0.508	0.552	0.187	0.075	0.521	0.231
+trailer	0.243	0.866	0.227	0.271	0.249	0.216
+construction_vehicle	0.085	0.867	0.471	0.870	0.117	0.370
+pedestrian	0.481	0.540	0.288	0.556	0.368	0.184
+motorcycle	0.463	0.483	0.250	0.356	0.515	0.214
+bicycle	0.430	0.409	0.267	0.503	0.175	0.019
+traffic_cone	0.650	0.309	0.311	nan	nan	nan
+barrier	0.621	0.311	0.282	0.115	nan	nan
 """
 from argparse import ArgumentParser, Namespace
 
@@ -30,7 +30,7 @@ from torch.cuda.amp.autocast_mode import autocast
 from torch.optim.lr_scheduler import MultiStepLR
 
 from callbacks.ema import EMACallback
-from exps.aedet.aedet_lss_r50_256x704_128x128_24e_2key import \
+from exps.aedet.aedet_lss_r101_512x1408_256x256_24e_2key import \
     AeDetLightningModel as BaseAeDetLightningModel
 from layers.backbones.lss_fpn import LSSFPN as BaseLSSFPN
 from layers.heads.aedet_head import AeDetHead
@@ -47,10 +47,10 @@ class AeDetLightningModel(BaseAeDetLightningModel):
 
     def configure_optimizers(self):
         lr = self.basic_lr_per_img * \
-            self.batch_size_per_device * self.gpus
+            self.batch_size_per_device * self.gpus * self.num_nodes
         optimizer = torch.optim.AdamW(self.model.parameters(),
                                       lr=lr,
-                                      weight_decay=2e-1)
+                                      weight_decay=1e-1)
         return [optimizer]
 
 
@@ -75,6 +75,11 @@ def main(args: Namespace) -> None:
 def run_cli():
     parent_parser = ArgumentParser(add_help=False)
     parent_parser = pl.Trainer.add_argparse_args(parent_parser)
+
+    parent_parser.add_argument("--local_rank", default=-1, type=int)
+    parent_parser.add_argument("--gpu_count", type=int, default=1, help="")
+    parent_parser.add_argument('--dist_url', type=str, default="")
+
     parent_parser.add_argument('-e',
                                '--evaluate',
                                dest='evaluate',
@@ -90,14 +95,17 @@ def run_cli():
     parser.set_defaults(profiler='simple',
                         deterministic=False,
                         max_epochs=20,
-                        accelerator='ddp',
+                        accelerator='gpu',  # ddp
                         num_sanity_val_steps=0,
                         gradient_clip_val=5,
                         limit_val_batches=1.0,
-                        check_val_every_n_epoch=4,
+                        check_val_every_n_epoch=30,
                         enable_checkpointing=False,
                         precision=16,
-                        default_root_dir='./outputs/aedet_lss_r50_256x704_128x128_20e_cbgs_2key')
+                        default_root_dir='./outputs/aedet_lss_r101_512x1408_256x256_20e_cbgs_2key',
+                        devices=8,
+                        strategy="ddp"
+                        )
     args = parser.parse_args()
     main(args)
 

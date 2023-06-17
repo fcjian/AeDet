@@ -78,13 +78,14 @@ python ${EXP_PATH} --ckpt_path ${EMA_CKPT_PATH} -e -b 8 --gpus 8
 ```
 
 ## Results
-Model | Image size | #Key frames | CBGS |  mAP  |  NDS   |  Download
---- |:-----------:|:-----------:|:---:|:-----:|:------:|:---:
-[BEVDepth_R50 (Baseline)](https://github.com/Megvii-BaseDetection/BEVDepth) | 256x704  |      1      |          | 0.315 | 0.367  |  --
-[BEVDepth_R50_2KEY (Baseline)](https://github.com/Megvii-BaseDetection/BEVDepth) | 256x704  |      2      |          | 0.330 | 0.442  |  --
-[AeDet_R50](exps/aedet/aedet_lss_r50_256x704_128x128_24e.py)   | 256x704  |      1      |          | 0.334 | 0.401  |  [google](https://drive.google.com/file/d/1S-NcWXs-7kTsw1qIZooGLMFw-LSBj93i/view?usp=sharing)
-[AeDet_R50_2KEY](exps/aedet/aedet_lss_r50_256x704_128x128_24e_2key.py)   | 256x704  |      2      |          | 0.359 | 0.473  |  [google](https://drive.google.com/file/d/1mExxghQJLCDiuZmYhmpozW7iv0ixmrzj/view?usp=sharing)
-[AeDet_R50_2KEY_CBGS](exps/aedet/aedet_lss_r50_256x704_128x128_20e_cbgs_2key.py)        | 256x704  |      2      |    &check;     | 0.381 | 0.502  |  [google](https://drive.google.com/file/d/19r3kCHGng3rBEHsgAskCXduKnB4Yu3Fq/view?usp=sharing)
+Model | Image size | #Key frames | CBGS |  mAP  |  NDS  |  Download
+--- |:----------:|:-----------:|:---:|:-----:|:-----:|:---:
+[BEVDepth_R50 (Baseline)](https://github.com/Megvii-BaseDetection/BEVDepth) |  256x704   |      1      |          | 0.315 | 0.367 |  --
+[BEVDepth_R50_2KEY (Baseline)](https://github.com/Megvii-BaseDetection/BEVDepth) |  256x704   |      2      |          | 0.330 | 0.442 |  --
+[AeDet_R50](exps/aedet/aedet_lss_r50_256x704_128x128_24e.py)   |  256x704   |      1      |          | 0.334 | 0.401 |  [google](https://drive.google.com/file/d/1S-NcWXs-7kTsw1qIZooGLMFw-LSBj93i/view?usp=sharing)
+[AeDet_R50_2KEY](exps/aedet/aedet_lss_r50_256x704_128x128_24e_2key.py)   |  256x704   |      2      |          | 0.359 | 0.473 |  [google](https://drive.google.com/file/d/1mExxghQJLCDiuZmYhmpozW7iv0ixmrzj/view?usp=sharing)
+[AeDet_R50_2KEY_CBGS](exps/aedet/aedet_lss_r50_256x704_128x128_20e_cbgs_2key.py)        |  256x704   |      2      |    &check;     | 0.381 | 0.502 |  [google](https://drive.google.com/file/d/19r3kCHGng3rBEHsgAskCXduKnB4Yu3Fq/view?usp=sharing)
+[AeDet_R101_2KEY_CBGS](exps/aedet/aedet_lss_r101_512x1408_256x256_20e_cbgs_2key.py)        |  512x1408  |      2      |    &check;     | 0.449 | 0.562 |  [google](https://drive.google.com/file/d/16L-cH7YSTyDiaGV41JM3zY9QxbxW1tTR/view?usp=sharing)
 
 ## Acknowledgement
 
